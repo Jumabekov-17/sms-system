@@ -21,7 +21,7 @@ public class Profile {
     private String name;
     @Column
     private String surname;
-    @Column
+    @Column(unique = true)
     private String login;
     @Column
     private String password;

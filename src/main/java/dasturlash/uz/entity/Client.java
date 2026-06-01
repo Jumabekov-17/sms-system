@@ -23,7 +23,7 @@ public class Client {
     private String ownerName;
     @Column(name = "owner_surname")
     private String ownerSurname;
-    @Column
+    @Column(unique = true)
     private String phone;
     @Column
     private String email;

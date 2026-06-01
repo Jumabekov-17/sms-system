@@ -11,3 +11,30 @@ Content-Type: application/json
   "login": "kun.uz",
   "password": "KUN_UZ"
 }
+
+### Client Login
+POST localhost:8080/client/login
+Content-Type: application/json
+
+{
+  "login": "kun.uz",
+  "password": "PASSWORD"
+}
+
+### Forgot Password Client
+POST localhost:8080/client/forgot-password
+Content-Type: application/json
+
+{
+  "phone": "+998507889670"
+}
+
+### Reset Password
+POST localhost:8080/client/reset-password
+Content-Type: application/json
+
+{
+  "phone": "+998507889670",
+  "code": "800593",
+  "newPassword": "PASSWORD"
+}

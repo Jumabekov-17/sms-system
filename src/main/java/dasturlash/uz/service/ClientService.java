@@ -1,19 +1,25 @@
 package dasturlash.uz.service;
 
-import dasturlash.uz.dto.RequestForRegisterClient;
+import dasturlash.uz.dto.client.RequestForClientLogin;
+import dasturlash.uz.dto.client.RequestForRegisterClient;
+import dasturlash.uz.dto.client.ResponseDtoForClient;
 import dasturlash.uz.entity.Client;
+import dasturlash.uz.enums.Status;
+import dasturlash.uz.enums.Visible;
 import dasturlash.uz.repository.ClientRepository;
-import jakarta.validation.Valid;
 import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ClientService {
     @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
     private ClientRepository clientRepository;
 
-    public String registerClient(@Valid RequestForRegisterClient request) {
+    public String registerClient(RequestForRegisterClient request) {
         boolean response = validationClientRequest(request.login(), request.email());
         if (response) {
             throw new ValidationException("Invalid login or password");
@@ -29,7 +35,7 @@ public class ClientService {
         client.setOwnerName(request.ownerName());
         client.setOwnerSurname(request.ownerSurname());
         client.setLogin(request.login());
-        client.setPassword(request.password());
+        client.setPassword(bCryptPasswordEncoder.encode(request.password()));
         client.setPhone(request.phone());
         client.setEmail(request.email());
         clientRepository.save(client);
@@ -39,5 +45,23 @@ public class ClientService {
 
     public boolean validationClientRequest(String login, String email) {
         return clientRepository.existsByLoginAndEmail(login, email);
+    }
+
+    public ResponseDtoForClient clientLogin(RequestForClientLogin request) {
+        Client client = clientRepository.findByLogin(request.login())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid login or password"));
+        if (!bCryptPasswordEncoder.matches(request.password(),client.getPassword())) {
+            throw new ValidationException("Invalid login or password");
+        }
+
+        ResponseDtoForClient responseDto = new ResponseDtoForClient();
+        responseDto.setLogin(client.getLogin());
+        responseDto.setPhone(client.getPhone());
+        responseDto.setEmail(client.getEmail());
+        responseDto.setCompanyName(client.getCompanyName());
+        responseDto.setOwnerName(client.getOwnerName());
+        responseDto.setOwnerSurname(client.getOwnerSurname());
+        responseDto.setId(client.getId());
+        return responseDto;
     }
 }

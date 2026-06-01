@@ -1,4 +1,4 @@
-package dasturlash.uz.dto;
+package dasturlash.uz.dto.client;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

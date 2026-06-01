@@ -1,0 +1,13 @@
+### Client Register
+POST localhost:8080/client/registration
+Content-Type: application/json
+
+{
+  "companyName": "Kun.uz",
+  "ownerName": "Qiyomiddin",
+  "ownerSurname": "Jumabekov",
+  "email": "qiyomiddinjumabekov1@gmail.com",
+  "phone": "+998507889670",
+  "login": "kun.uz",
+  "password": "KUN_UZ"
+}

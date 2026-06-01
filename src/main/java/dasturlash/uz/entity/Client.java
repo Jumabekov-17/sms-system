@@ -3,11 +3,16 @@ package dasturlash.uz.entity;
 import dasturlash.uz.enums.Status;
 import dasturlash.uz.enums.Visible;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@Setter
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,13 +32,14 @@ public class Client {
     @Column
     private String password;
     @Column(precision = 19, scale = 2)
-    private BigDecimal balance;
+    private BigDecimal balance = BigDecimal.ZERO;
     @Column
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.BLOCKED;
     @Column(name = "created_date")
+    @CreationTimestamp
     private LocalDateTime createdAt;
     @Column
     @Enumerated(EnumType.STRING)
-    private Visible visible;
+    private Visible visible = Visible.INACTIVE;
 }

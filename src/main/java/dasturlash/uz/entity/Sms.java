@@ -2,10 +2,15 @@ package dasturlash.uz.entity;
 
 import dasturlash.uz.enums.SmsStatus;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@Setter
 public class Sms {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +27,6 @@ public class Sms {
     @Enumerated(EnumType.STRING)
     private SmsStatus status;
     @Column(name = "created_date")
+    @CreationTimestamp
     private LocalDateTime createdAt;
 }

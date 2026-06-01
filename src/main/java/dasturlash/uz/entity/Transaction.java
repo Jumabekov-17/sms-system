@@ -1,0 +1,29 @@
+package dasturlash.uz.entity;
+
+import dasturlash.uz.enums.TransactionType;
+import jakarta.persistence.*;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+@Entity
+public class Transaction {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = "client_id")
+    private Integer clientId;
+    @Column
+    @Enumerated(EnumType.STRING)
+    private TransactionType type;
+    @Column
+    private BigDecimal amount;
+    @Column
+    private String description;
+    @Column
+    private BigDecimal balanceBefore;
+    @Column
+    private BigDecimal balanceAfter;
+    @Column(name = "created_date")
+    private LocalDateTime createdAt;
+}

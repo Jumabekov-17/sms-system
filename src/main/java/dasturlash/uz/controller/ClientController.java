@@ -1,9 +1,6 @@
 package dasturlash.uz.controller;
 
-import dasturlash.uz.dto.client.RequestForClientLogin;
-import dasturlash.uz.dto.client.RequestForRegisterClient;
-import dasturlash.uz.dto.client.RequestForgotPasswordClient;
-import dasturlash.uz.dto.client.RequestResetPassword;
+import dasturlash.uz.dto.client.*;
 import dasturlash.uz.service.ClientService;
 import dasturlash.uz.service.VerificationService;
 import jakarta.validation.Valid;
@@ -41,5 +38,10 @@ public class ClientController {
     @PostMapping("/reset-password")
     public ResponseEntity<?> resetPassword(@RequestBody @Valid RequestResetPassword request) {
         return ResponseEntity.ok(verificationService.resetPassword(request));
+    }
+
+    @PostMapping("/update-password")
+    public ResponseEntity<?> updatePassword(@RequestBody @Valid RequestUpdatePassword request) {
+        return ResponseEntity.ok(verificationService.updatePassword(request));
     }
 }

@@ -38,3 +38,13 @@ Content-Type: application/json
   "code": "800593",
   "newPassword": "PASSWORD"
 }
+
+### Update Password
+POST localhost:8080/client/update-password
+Content-Type: application/json
+
+{
+  "phone": "+998507889670",
+  "oldPassword": "PPPPPP",
+  "newPassword": "Password"
+}

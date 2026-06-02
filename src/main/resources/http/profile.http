@@ -1,0 +1,10 @@
+### Register Profile
+POST localhost:8080/profile/register
+Content-Type: application/json
+
+{
+  "name": "Zayniddin",
+  "surname": "Jumabekov",
+  "login": "Zayni",
+  "password": "12345"
+}

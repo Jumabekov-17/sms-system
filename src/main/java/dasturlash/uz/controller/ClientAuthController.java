@@ -1,7 +1,7 @@
 package dasturlash.uz.controller;
 
-import dasturlash.uz.dto.client.*;
-import dasturlash.uz.service.ClientService;
+import dasturlash.uz.dto.client.authentication.*;
+import dasturlash.uz.service.ClientAuthenticationService;
 import dasturlash.uz.service.VerificationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,19 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/client")
 public class ClientAuthController {
     @Autowired
-    private ClientService clientService;
+    private ClientAuthenticationService clientAuthenticationService;
 
     @Autowired
     private VerificationService verificationService;
 
     @PostMapping("/registration")
     public ResponseEntity<?> clientRegister(@RequestBody @Valid RequestForRegisterClient request) {
-        return ResponseEntity.ok(clientService.registerClient(request));
+        return ResponseEntity.ok(clientAuthenticationService.registerClient(request));
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> loginClient(@RequestBody @Valid RequestForClientLogin request) {
-        return ResponseEntity.ok(clientService.clientLogin(request));
+        return ResponseEntity.ok(clientAuthenticationService.clientLogin(request));
     }
 
     @PostMapping("/forgot-password")

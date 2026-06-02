@@ -2,7 +2,7 @@ package dasturlash.uz.controller;
 
 import dasturlash.uz.dto.profile.RequestForLoginProfile;
 import dasturlash.uz.dto.profile.RequestForRegisterProfile;
-import dasturlash.uz.service.ProfileService;
+import dasturlash.uz.service.ProfileAuthenticationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProfileAuthController {
 
     @Autowired
-    private ProfileService profileService;
+    private ProfileAuthenticationService profileService;
 
     @PostMapping("/register")
     public ResponseEntity<?> registerProfile(@RequestBody @Valid RequestForRegisterProfile request) {

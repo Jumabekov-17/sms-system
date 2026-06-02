@@ -1,4 +1,4 @@
-package dasturlash.uz.dto.client;
+package dasturlash.uz.dto.client.authentication;
 
 import lombok.Getter;
 import lombok.Setter;

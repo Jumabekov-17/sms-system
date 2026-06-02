@@ -1,13 +1,12 @@
 package dasturlash.uz.service;
 
-import dasturlash.uz.dto.client.RequestForgotPasswordClient;
-import dasturlash.uz.dto.client.RequestResetPassword;
-import dasturlash.uz.dto.client.RequestUpdatePassword;
+import dasturlash.uz.dto.client.authentication.RequestForgotPasswordClient;
+import dasturlash.uz.dto.client.authentication.RequestResetPassword;
+import dasturlash.uz.dto.client.authentication.RequestUpdatePassword;
 import dasturlash.uz.entity.Client;
 import dasturlash.uz.entity.ClientForgotPassword;
 import dasturlash.uz.repository.ClientRepository;
 import dasturlash.uz.repository.ForgotPasswordRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

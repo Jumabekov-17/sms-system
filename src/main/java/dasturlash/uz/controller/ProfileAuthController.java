@@ -1,6 +1,7 @@
 package dasturlash.uz.controller;
 
-import dasturlash.uz.dto.admin.RequestForRegisterProfile;
+import dasturlash.uz.dto.profile.RequestForLoginProfile;
+import dasturlash.uz.dto.profile.RequestForRegisterProfile;
 import dasturlash.uz.service.ProfileService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,10 @@ public class ProfileAuthController {
     @PostMapping("/register")
     public ResponseEntity<?> registerProfile(@RequestBody @Valid RequestForRegisterProfile request) {
         return ResponseEntity.ok(profileService.registerProfile(request));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody @Valid RequestForLoginProfile request) {
+        return ResponseEntity.ok(profileService.loginProfile(request));
     }
 }

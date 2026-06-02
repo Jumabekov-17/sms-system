@@ -1,6 +1,8 @@
 package dasturlash.uz.service;
 
-import dasturlash.uz.dto.admin.RequestForRegisterProfile;
+import dasturlash.uz.dto.profile.RequestForLoginProfile;
+import dasturlash.uz.dto.profile.RequestForRegisterProfile;
+import dasturlash.uz.dto.profile.ResponseDtoForProfile;
 import dasturlash.uz.entity.Profile;
 import dasturlash.uz.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +31,17 @@ public class ProfileService {
         profile.setName(request.name());
         profileRepository.save(profile);
         return "Profile registered successfully";
+    }
+
+    public ResponseDtoForProfile loginProfile(RequestForLoginProfile request) {
+        Profile profile = profileRepository.findByLoginAndPassword(request.login(), request.password())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid login or password"));
+
+        ResponseDtoForProfile response = new ResponseDtoForProfile();
+        response.setName(profile.getName());
+        response.setSurname(profile.getSurname());
+        response.setLogin(profile.getLogin());
+        response.setId(profile.getId());
+        return response;
     }
 }

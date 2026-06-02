@@ -8,3 +8,12 @@ Content-Type: application/json
   "login": "Zayni",
   "password": "12345"
 }
+
+### Login Profile
+POST localhost:8080/profile/login
+Content-Type: application/json
+
+{
+  "login": "Zayni",
+  "password": "12345"
+}

@@ -1,0 +1,17 @@
+### Get Client info with id
+GET localhost:8080/client/profile/2
+
+### Get Balance By Client Id
+GET localhost:8080/client/balance/2
+
+### Fill Balance For Client
+POST localhost:8080/client/fill-balance
+Content-Type: application/json
+
+{
+  "balance": 200000,
+  "clientId": 2
+}
+
+### My sms
+GET localhost:8080/sms/my-sms?id=2&page=1&size=2

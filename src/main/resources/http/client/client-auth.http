@@ -48,6 +48,3 @@ Content-Type: application/json
   "oldPassword": "PPPPPP",
   "newPassword": "Password"
 }
-
-### Get Client info with id
-GET localhost:8080/client/profile/2

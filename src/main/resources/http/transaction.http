@@ -1,0 +1,2 @@
+### Get transactions by Client Id
+GET localhost:8080/transaction/my/2?page=1&size=2

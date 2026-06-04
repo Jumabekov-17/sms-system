@@ -1,0 +1,23 @@
+### Get All clients
+GET localhost:8080/admin/get-clients?page=1&size=2
+
+### Get Client By Id
+GET localhost:8080/admin/client-by-id/2
+
+### Client Blocked with Client ID
+PUT localhost:8080/admin/block-client/1
+
+### UnBlock client by ID
+PUT localhost:8080/admin/unblock-client/1
+
+### Get All Sms
+GET localhost:8080/admin/all-sms?page=1&size=2
+
+### GEt sms by Sms Id
+GET localhost:8080/admin/sms-by-id/1
+
+### Get All Transactions
+GET localhost:8080/admin/transactions?page=1&size=2
+
+### Get Transaction By Id
+GET localhost:8080/admin/transaction-by-id/1

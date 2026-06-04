@@ -1,0 +1,9 @@
+### Send Sms
+POST localhost:8080/sms/send
+Content-Type: application/json
+
+{
+  "clientId": 2,
+  "phoneNumber": "+999850688954",
+  "text": "Code: 23435"
+}

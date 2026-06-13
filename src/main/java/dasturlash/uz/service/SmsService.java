@@ -44,7 +44,7 @@ public class SmsService {
         Sms sms = new Sms();
         sms.setClientId(client.getId());
         sms.setPhone(request.phoneNumber());
-        sms.setText(request.text());
+        sms.setText(request.message());
         sms.setStatus(SmsStatus.SENT);
         smsRepository.save(sms);
 

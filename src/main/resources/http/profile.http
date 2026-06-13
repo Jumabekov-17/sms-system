@@ -1,5 +1,5 @@
 ### Register Profile
-POST localhost:8080/profile/register
+POST localhost:8085/profile/register
 Content-Type: application/json
 
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ### Login Profile
-POST localhost:8080/profile/login
+POST localhost:8085/profile/login
 Content-Type: application/json
 
 {

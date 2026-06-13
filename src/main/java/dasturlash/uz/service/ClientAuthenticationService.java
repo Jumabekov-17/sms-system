@@ -20,7 +20,7 @@ public class ClientAuthenticationService {
     public String registerClient(RequestForRegisterClient request) {
         boolean response = validationClientRequest(request.login(), request.email());
         if (response) {
-            throw new ValidationException("Invalid login or password");
+            throw new ValidationException("Invalid Username or password");
         }
         if (request.password().length() < 4) {
             throw new ValidationException("Password length too short");

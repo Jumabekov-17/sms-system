@@ -2,20 +2,21 @@ package dasturlash.uz.controller;
 
 import dasturlash.uz.dto.client.authentication.*;
 import dasturlash.uz.service.ClientAuthenticationService;
+import dasturlash.uz.service.ClientService;
 import dasturlash.uz.service.VerificationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/client")
 public class ClientAuthController {
     @Autowired
     private ClientAuthenticationService clientAuthenticationService;
+
+    @Autowired
+    private ClientService clientService;
 
     @Autowired
     private VerificationService verificationService;
@@ -43,5 +44,11 @@ public class ClientAuthController {
     @PostMapping("/update-password")
     public ResponseEntity<?> updatePassword(@RequestBody @Valid RequestUpdatePassword request) {
         return ResponseEntity.ok(verificationService.updatePassword(request));
+    }
+
+    @PostMapping("/get-id")
+    public ResponseEntity<Integer> getClientId(
+            @RequestBody RequestForClientLogin request) {
+        return ResponseEntity.ok(clientService.getClientIdByLoginAndPassword(request));
     }
 }

@@ -1,5 +1,5 @@
 ### Client Register
-POST localhost:8080/client/registration
+POST localhost:8085/client/registration
 Content-Type: application/json
 
 {
@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ### Client Login
-POST localhost:8080/client/login
+POST localhost:8085/client/login
 Content-Type: application/json
 
 {
@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ### Forgot Password Client
-POST localhost:8080/client/forgot-password
+POST localhost:8085/client/forgot-password
 Content-Type: application/json
 
 {
@@ -30,7 +30,7 @@ Content-Type: application/json
 }
 
 ### Reset Password
-POST localhost:8080/client/reset-password
+POST localhost:8085/client/reset-password
 Content-Type: application/json
 
 {
@@ -40,7 +40,7 @@ Content-Type: application/json
 }
 
 ### Update Password
-POST localhost:8080/client/update-password
+POST localhost:8085/client/update-password
 Content-Type: application/json
 
 {

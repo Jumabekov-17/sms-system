@@ -1,5 +1,6 @@
 package dasturlash.uz.service;
 
+import dasturlash.uz.dto.client.authentication.RequestForClientLogin;
 import dasturlash.uz.dto.client.service.RequestForFillBalance;
 import dasturlash.uz.dto.client.service.ResponseDtoForClientInfo;
 import dasturlash.uz.entity.Client;
@@ -8,6 +9,8 @@ import dasturlash.uz.enums.TransactionType;
 import dasturlash.uz.repository.ClientRepository;
 import dasturlash.uz.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -19,6 +22,9 @@ public class ClientService {
 
     @Autowired
     private TransactionRepository transactionRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public ResponseDtoForClientInfo clientProfile(Integer id) {
         Client client = clientRepository.findById(id)
@@ -74,5 +80,16 @@ public class ClientService {
                 .orElseThrow(() -> new IllegalArgumentException("Client with id " + clientId + " not found"));
         client.setBalance(client.getBalance().subtract(amount));
         clientRepository.save(client);
+    }
+
+
+    public Integer getClientIdByLoginAndPassword(RequestForClientLogin request) {
+        Client client = clientRepository.findByLogin(request.login())
+                .orElseThrow(() -> new IllegalArgumentException("Client not found"));
+
+        if (!bCryptPasswordEncoder.matches(request.password(), client.getPassword())) {
+            throw new IllegalArgumentException("Wrong password");
+        }
+        return client.getId();
     }
 }

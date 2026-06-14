@@ -12,9 +12,6 @@ saved in a separate DB and used for verification.
 - Java 17 | Spring Boot | Spring Security
 - PostgreSQL | REST API | Maven
 
-## Architecture
-kun.uz  ←——→ sms-system 
-
 ## Getting Started
 1. Clone the repository
 2. Configure DB and run `mvn spring-boot:run`

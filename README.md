@@ -13,7 +13,7 @@ saved in a separate DB and used for verification.
 - PostgreSQL | REST API | Maven
 
 ## Architecture
-kun.uz (8081) ←——→ sms-system (8085)
+kun.uz  ←——→ sms-system 
 
 ## Getting Started
 1. Clone the repository
